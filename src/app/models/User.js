@@ -1,7 +1,7 @@
 import Sequelize, { Model } from 'sequelize';
 
 class User extends Model {
-  static init(sequelize) {
+  static init(connection) {
     super.init(
       {
         name: Sequelize.STRING,
@@ -9,7 +9,7 @@ class User extends Model {
         password_hash: Sequelize.STRING,
       },
       {
-        sequelize,
+        sequelize: connection,
       }
     );
   }

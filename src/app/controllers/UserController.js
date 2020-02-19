@@ -32,6 +32,16 @@ class UserController {
   }
 
   async update(req, res) {
+    const schema = Yup.object().shape({
+      name: Yup.string(),
+      email: Yup.string().email(),
+      password: Yup.string().min(6),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validations fails' });
+    }
+
     const { email, oldPassword } = req.body;
 
     const user = await User.findByPk(req.userId);

@@ -9,11 +9,14 @@ import RecipientController from './app/controllers/RecipientController';
 import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
 import DeliveryGuyController from './app/controllers/DeliveryGuyController';
+import SignatureController from './app/controllers/SignatureController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
 
 routes.post('/sessions', SessionController.store);
+
+routes.post('/signatures', upload.single('file'), SignatureController.store);
 
 routes.use(authMiddleware);
 routes.post('/users', UserController.store);

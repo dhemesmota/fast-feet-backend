@@ -10,13 +10,12 @@ import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
 import DeliveryGuyController from './app/controllers/DeliveryGuyController';
 import SignatureController from './app/controllers/SignatureController';
+import OrderController from './app/controllers/OrderController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
 
 routes.post('/sessions', SessionController.store);
-
-routes.post('/signatures', upload.single('file'), SignatureController.store);
 
 routes.use(authMiddleware);
 routes.post('/users', UserController.store);
@@ -32,6 +31,13 @@ routes.post('/delivery-guys', DeliveryGuyController.store);
 routes.put('/delivery-guys/:id', DeliveryGuyController.update);
 routes.delete('/delivery-guys/:id', DeliveryGuyController.delete);
 
+routes.get('/orders', OrderController.index);
+routes.post('/orders', OrderController.store);
+routes.put('/orders/:id', OrderController.update);
+routes.delete('/orders/:id', OrderController.delete);
+
 routes.post('/files', upload.single('file'), FileController.store);
+
+routes.post('/signatures', upload.single('file'), SignatureController.store);
 
 export default routes;

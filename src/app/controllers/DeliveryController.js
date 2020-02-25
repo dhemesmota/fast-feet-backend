@@ -1,4 +1,4 @@
-class OrderController {
+class DeliveryController {
   async index(req, res) {
     return res.json({ ok: true });
   }
@@ -16,4 +16,4 @@ class OrderController {
   }
 }
 
-export default new OrderController();
+export default new DeliveryController();

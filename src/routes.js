@@ -8,9 +8,9 @@ import UserController from './app/controllers/UserController';
 import RecipientController from './app/controllers/RecipientController';
 import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
-import DeliveryGuyController from './app/controllers/DeliveryGuyController';
+import DeliveryManController from './app/controllers/DeliveryManController';
 import SignatureController from './app/controllers/SignatureController';
-import OrderController from './app/controllers/OrderController';
+import DeliveryController from './app/controllers/DeliveryController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -26,15 +26,15 @@ routes.post('/recipients', RecipientController.store);
 routes.put('/recipients/:id', RecipientController.update);
 routes.delete('/recipients/:id', RecipientController.delete);
 
-routes.get('/delivery-guys', DeliveryGuyController.index);
-routes.post('/delivery-guys', DeliveryGuyController.store);
-routes.put('/delivery-guys/:id', DeliveryGuyController.update);
-routes.delete('/delivery-guys/:id', DeliveryGuyController.delete);
+routes.get('/delivery-mans', DeliveryManController.index);
+routes.post('/delivery-mans', DeliveryManController.store);
+routes.put('/delivery-mans/:id', DeliveryManController.update);
+routes.delete('/delivery-mans/:id', DeliveryManController.delete);
 
-routes.get('/orders', OrderController.index);
-routes.post('/orders', OrderController.store);
-routes.put('/orders/:id', OrderController.update);
-routes.delete('/orders/:id', OrderController.delete);
+routes.get('/deliverys', DeliveryController.index);
+routes.post('/deliverys', DeliveryController.store);
+routes.put('/deliverys/:id', DeliveryController.update);
+routes.delete('/deliverys/:id', DeliveryController.delete);
 
 routes.post('/files', upload.single('file'), FileController.store);
 
